@@ -47,9 +47,10 @@ int main(void)
     iter(charArray, 5, print<char>);
 
 
-    int *a = new int();
+    int *a = new int[5]();
 
     iter(a, 5, printInt);
 
+    delete[] a;
     return (0);
 }

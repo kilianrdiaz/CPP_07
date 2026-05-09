@@ -1,22 +1,24 @@
-NAME    = templates
+NAME    = 	templates
 
-CC      = c++
-CFLAGS  = -Wall -Wextra -Werror -std=c++98
+CC      = 	c++
+CFLAGS  = 	-Wall -Wextra -Werror -std=c++98
 
-INC_DIR = inc
-SRC_DIR = src
-OBJ_DIR = obj
+INC_DIR = 	inc
+SRC_DIR = 	src
+OBJ_DIR = 	obj
 
-SRCS    = main.cpp
+SRCS    =	$(SRC_DIR)/main.cpp
 
-OBJS    = $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRCS))
+INCS	=	$(INC_DIR)/whatever.hpp
+
+OBJS    = 	$(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp Makefile | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(INCS) Makefile | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
 
 $(OBJ_DIR):

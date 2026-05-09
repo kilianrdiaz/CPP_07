@@ -38,7 +38,7 @@ int main()
 
     try
     {
-        std::cout << intArray[10] << std::endl; // This should throw an exception
+        std::cout << intArray[10] << std::endl;
     }
     catch (const std::out_of_range &e)
     {
